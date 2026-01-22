@@ -3,9 +3,676 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>project-983c1a1769090894080</title>
+    <title>Hasibs-restaurent | Fine Dining Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-brown: #2c1810;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --text-color: #333333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--gold);
+            color: var(--white);
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--dark-brown);
+            color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 24, 16, 0.7), rgba(44, 24, 16, 0.7)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections common styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-brown);
+            margin-bottom: 10px;
+        }
+
+        .section-title .underline {
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 0 auto;
+        }
+
+        /* Menu Section */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .menu-category {
+            margin-bottom: 50px;
+        }
+
+        .menu-category h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-header h4 {
+            font-size: 1.2rem;
+            color: var(--dark-brown);
+        }
+
+        .price {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background-color: var(--dark-brown);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .gallery-item:nth-child(1) { background-color: #3e2723; }
+        .gallery-item:nth-child(2) { background-color: #5d4037; }
+        .gallery-item:nth-child(3) { background-color: #795548; }
+        .gallery-item:nth-child(4) { background-color: #8d6e63; }
+        .gallery-item:nth-child(5) { background-color: #a1887f; }
+        .gallery-item:nth-child(6) { background-color: #d4af37; }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            background: rgba(0,0,0,0.2);
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark-brown);
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplification for prototype */
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Blank white page -->
+
+    <header>
+        <nav class="container">
+            <div class="logo">HASIBS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Hasibs-restaurent</h1>
+            <p>Experience the Art of Fine Dining</p>
+            <a href="#menu" class="btn">View Our Menu</a>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Exquisite Menu</h2>
+                <div class="underline"></div>
+            </div>
+
+            <!-- Appetizers -->
+            <div class="menu-category">
+                <h3>Appetizers</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Classic Bruschetta</h4>
+                            <span class="price">$12.00</span>
+                        </div>
+                        <p>Grilled sourdough topped with tomatoes, basil, garlic, and balsamic glaze.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Stuffed Mushrooms</h4>
+                            <span class="price">$14.00</span>
+                        </div>
+                        <p>Cremini mushrooms filled with herbed cream cheese and parmesan crust.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Crispy Calamari</h4>
+                            <span class="price">$16.00</span>
+                        </div>
+                        <p>Lightly breaded squid served with spicy marinara and lemon aioli.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Caprese Salad</h4>
+                            <span class="price">$13.00</span>
+                        </div>
+                        <p>Fresh mozzarella, heirloom tomatoes, and basil with extra virgin olive oil.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Courses -->
+            <div class="menu-category">
+                <h3>Main Courses</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Herb-Crusted Filet Mignon</h4>
+                            <span class="price">$42.00</span>
+                        </div>
+                        <p>8oz premium beef served with garlic mashed potatoes and seasonal vegetables.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Pan-Seared Atlantic Salmon</h4>
+                            <span class="price">$34.00</span>
+                        </div>
+                        <p>Wild-caught salmon with lemon butter sauce and wild rice pilaf.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Wild Mushroom Risotto</h4>
+                            <span class="price">$28.00</span>
+                        </div>
+                        <p>Creamy arborio rice with porcini, shiitake, and truffle oil.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Chicken Marsala</h4>
+                            <span class="price">$30.00</span>
+                        </div>
+                        <p>Pan-fried chicken breast with a rich mushroom and Marsala wine sauce.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-category">
+                <h3>Desserts</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Classic Tiramisu</h4>
+                            <span class="price">$10.00</span>
+                        </div>
+                        <p>Layers of coffee-soaked ladyfingers and creamy mascarpone cheese.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Chocolate Lava Cake</h4>
+                            <span class="price">$12.00</span>
+                        </div>
+                        <p>Warm chocolate cake with a molten center, served with vanilla bean gelato.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Vanilla Bean Panna Cotta</h4>
+                            <span class="price">$9.00</span>
+                        </div>
+                        <p>Silky cooked cream topped with fresh seasonal berry coulis.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>New York Cheesecake</h4>
+                            <span class="price">$11.00</span>
+                        </div>
+                        <p>Rich and creamy cheesecake with a graham cracker crust.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div class="menu-category">
+                <h3>Beverages</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Signature Old Fashioned</h4>
+                            <span class="price">$15.00</span>
+                        </div>
+                        <p>Premium bourbon, bitters, and a touch of orange peel.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Fresh Mint Lemonade</h4>
+                            <span class="price">$6.00</span>
+                        </div>
+                        <p>Homemade lemonade with garden-fresh mint and honey.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Artisanal Roasted Coffee</h4>
+                            <span class="price">$5.00</span>
+                        </div>
+                        <p>Freshly brewed local beans, available in various styles.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Sparkling Mineral Water</h4>
+                            <span class="price">$7.00</span>
+                        </div>
+                        <p>Premium 750ml bottle, served chilled with lemon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">Main Dining Room</div>
+                <div class="gallery-item">Chef's Special</div>
+                <div class="gallery-item">Cozy Ambiance</div>
+                <div class="gallery-item">Wine Cellar</div>
+                <div class="gallery-item">Dessert Art</div>
+                <div class="gallery-item">Outdoor Seating</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p style="margin-bottom: 20px;">We would love to hear from you. For reservations or inquiries, please use the contact form or reach out directly.</p>
+                    
+                    <div class="info-item">
+                        <span><strong>Address:</strong> 123 Gourmet Avenue, Food City, FC 45678</span>
+                    </div>
+                    <div class="info-item">
+                        <span><strong>Phone:</strong> +1 (555) 123-4567</span>
+                    </div>
+                    <div class="info-item">
+                        <span><strong>Email:</strong> info@hasibs-restaurent.com</span>
+                    </div>
+                    
+                    <h3 style="margin-top: 40px;">Opening Hours</h3>
+                    <p>Mon - Thu: 11:00 AM - 10:00 PM</p>
+                    <p>Fri - Sat: 11:00 AM - 11:30 PM</p>
+                    <p>Sunday: 10:00 AM - 9:00 PM</p>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">HASIBS</div>
+                    <p>Crafting unforgettable culinary experiences since 2010. Quality ingredients and exceptional service are our hallmarks.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hasibs-restaurent. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
